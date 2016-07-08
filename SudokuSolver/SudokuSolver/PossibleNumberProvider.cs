@@ -6,25 +6,30 @@ namespace SudokuSolver
 {
     class PossibleNumberProvider
     {
+        private int[] allDigits = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
         private int[] possibleNumbersFromRow;
         private int[] possibleNumbersFromColumn;
         private int[] possibleNumbersFromSquare;
-        private int[] commonPossibleList;
+        public int[] commonPossiblesList;
 
         public PossibleNumberProvider(int[][] table, int row, int column)
         {
-            Rows rows = new Rows();
-            possibleNumbersFromRow = rows.GetPossibles(table, row);
-            Columns columns = new Columns();
-            possibleNumbersFromColumn = columns.GetPossibles(table, column);
-            Squares squares = new Squares();
-            possibleNumbersFromSquare = squares.GetPossibles(table, row, column);
+            CheckRows checkRows = new CheckRows();
+            possibleNumbersFromRow = checkRows.GetPossibles(table, row);
+            CheckColumns checkColumns = new CheckColumns();
+            possibleNumbersFromColumn = checkColumns.GetPossibles(table, column);
+            CheckSquares checkSquares = new CheckSquares();
+            possibleNumbersFromSquare = checkSquares.GetPossibles(table, row, column);
             FindCommonPossiblesList();
         }
 
         private int[] FindCommonPossiblesList()
         {
-            return commonPossibleList;
+            foreach (var number in possibleNumbersFromRow)
+            {
+                if(number in commonPossiblesList)
+            }
+            return commonPossiblesList;
         }
     }
 }

@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace SudokuSolver
 {
-    public class Squares
+    public class CheckSquares
     {
         private int[] allDigits = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9};
         private int[] notPossibles;
-        private int[] possibles;
+        private int[] squarePossibles;
 
         public int[] GetPossibles(int[][] table, int row, int column)
         {
@@ -23,8 +23,8 @@ namespace SudokuSolver
                         ((IList)notPossibles).Add(table[i][j]);
                 }
             }
-            possibles = (int[]) allDigits.Except(notPossibles);
-            return possibles;
+            squarePossibles = (int[]) allDigits.Except(notPossibles);
+            return squarePossibles;
         }
         
 

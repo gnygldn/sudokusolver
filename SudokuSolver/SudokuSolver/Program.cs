@@ -14,6 +14,7 @@ namespace SudokuSolver
         {
             FillTable fillTable = new FillTable();
             fillTable.TableFiller(table);
+
         }
     }
 }
