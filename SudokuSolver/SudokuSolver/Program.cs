@@ -2,12 +2,13 @@
 {
     public class Program
     {
-        private static int[][] table;
+        public static int[,] table;
 
         static void main(string[] args)
         {
             FillTable fillTable = new FillTable();
             fillTable.TableFiller(table);
+            fillTable.GetTable();
         }
     }
 }

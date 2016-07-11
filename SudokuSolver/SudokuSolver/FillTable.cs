@@ -4,6 +4,8 @@ namespace SudokuSolver
 {
     public class FillTable
     {
+        private int[,] Table;
+
         public Boolean TableFiller(int[,] table)
         {
             for (int row = 0; row < 9; row++)
@@ -40,7 +42,13 @@ namespace SudokuSolver
                     }
                 }
             }
+            Table = table;
             return true;
+        }
+
+        public int[,] GetTable()
+        {
+            return Table;
         }
     }
 }
