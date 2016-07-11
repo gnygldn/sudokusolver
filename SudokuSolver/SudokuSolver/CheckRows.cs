@@ -9,7 +9,7 @@ namespace SudokuSolver
 {
     public class CheckRows
     {
-        private int[] allDigits = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        private int[] allDigits = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9};
         private int[] notPossibles;
         private int[] rowPossibles;
 
@@ -22,6 +22,11 @@ namespace SudokuSolver
             }
             rowPossibles = (int[]) allDigits.Except(notPossibles);
             return rowPossibles;
+        }
+
+        public int[] GetNotPossibles()
+        {
+            return notPossibles;
         }
     }
 }

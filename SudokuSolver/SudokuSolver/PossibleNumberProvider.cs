@@ -6,29 +6,29 @@ namespace SudokuSolver
 {
     class PossibleNumberProvider
     {
-        private int[] allDigits = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-        private int[] possibleNumbersFromRow;
-        private int[] possibleNumbersFromColumn;
-        private int[] possibleNumbersFromSquare;
+        private int[] allDigits = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        private int[] notPossibleNumbersFromRow;
+        private int[] notPossibleNumbersFromColumn;
+        private int[] notPossibleNumbersFromSquare;
         public int[] commonPossiblesList;
 
-        public PossibleNumberProvider(int[][] table, int row, int column)
+        public PossibleNumberProvider(int[,] table, int row, int column)
         {
             CheckRows checkRows = new CheckRows();
-            possibleNumbersFromRow = checkRows.GetPossibles(table, row);
+            notPossibleNumbersFromRow = checkRows.GetNotPossibles();
             CheckColumns checkColumns = new CheckColumns();
-            possibleNumbersFromColumn = checkColumns.GetPossibles(table, column);
+            notPossibleNumbersFromColumn = checkColumns.GetNotPossibles();
             CheckSquares checkSquares = new CheckSquares();
-            possibleNumbersFromSquare = checkSquares.GetPossibles(table, row, column);
-            FindCommonPossiblesList();
+            notPossibleNumbersFromSquare = checkSquares.GetNotPossibles();
+            commonPossiblesList =
+                (int[])
+                    allDigits.Except(
+                        notPossibleNumbersFromSquare.Concat(
+                            notPossibleNumbersFromColumn.Concat(notPossibleNumbersFromRow)));
         }
 
-        private int[] FindCommonPossiblesList()
+        private int[] GetCommonPossiblesList()
         {
-            foreach (var number in possibleNumbersFromRow)
-            {
-                if(number in commonPossiblesList)
-            }
             return commonPossiblesList;
         }
     }

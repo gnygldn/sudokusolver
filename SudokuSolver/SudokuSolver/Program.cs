@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SudokuSolver
+﻿namespace SudokuSolver
 {
     public class Program
     {
@@ -14,7 +8,6 @@ namespace SudokuSolver
         {
             FillTable fillTable = new FillTable();
             fillTable.TableFiller(table);
-
         }
     }
 }

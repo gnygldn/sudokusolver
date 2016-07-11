@@ -15,18 +15,21 @@ namespace SudokuSolver
 
         public int[] GetPossibles(int[][] table, int row, int column)
         {
-            for (int i = (row / 3); i < i + 3; i++)
+            for (int i = (row/3); i < i + 3; i++)
             {
-                for (int j = (column / 3); j < j + 3; j++)
+                for (int j = (column/3); j < j + 3; j++)
                 {
                     if (table[i][j] != 0)
-                        ((IList)notPossibles).Add(table[i][j]);
+                        ((IList) notPossibles).Add(table[i][j]);
                 }
             }
             squarePossibles = (int[]) allDigits.Except(notPossibles);
             return squarePossibles;
         }
-        
 
+        public int[] GetNotPossibles()
+        {
+            return notPossibles;
+        }
     }
 }
