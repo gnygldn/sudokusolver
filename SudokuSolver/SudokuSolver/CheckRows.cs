@@ -11,14 +11,14 @@ namespace SudokuSolver
     {
         private int[] allDigits = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9};
         private int[] notPossibles;
-        private int[] rowPossibles;
+        public int[] rowPossibles;
 
-        public int[] GetPossibles(int[][] table, int row)
+        public int[] GetPossibles(int[,] table, int row)
         {
             for (int i = 0; i < 9; i++)
             {
-                if (table[row][i] != 0)
-                    ((IList) notPossibles).Add(table[row][i]);
+                if (table[row,i] != 0)
+                    ((IList) notPossibles).Add(table[row,i]);
             }
             rowPossibles = (int[]) allDigits.Except(notPossibles);
             return rowPossibles;
