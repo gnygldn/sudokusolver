@@ -30,7 +30,7 @@ namespace SudokuSolverFixer
         public void FixCheckColumns()
         {
             var response = new CheckColumns();
-            response.GetPossibles(table, 2);
+            var (possibles, notpossibles) = response.GetPossibles(table, 2);
             response.columnPossibles.Should().BeEquivalentTo(new[] {1, 3, 4, 5, 6, 7, 8, 9});
         }
 

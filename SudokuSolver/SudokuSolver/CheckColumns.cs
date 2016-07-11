@@ -9,27 +9,35 @@ namespace SudokuSolver
 {
     public class CheckColumns
     {
-        private int[] allDigits = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        public int[] notPossibles = new int[9];
-        public int[] columnPossibles;
+        readonly int[] allDigits = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        public List<int> notPossibles = new List<int>();
 
-        public int[] GetPossibles(int[,] table, int coloumn)
+        public CheckResult GetPossibles(int[,] table, int coloumn)
         {
+            var result = new CheckResult();
             for (int i = 0; i < 9; i++)
             {
                 if (table[i, coloumn] != 0)
                 {
-                    notPossibles[0] = table[i, coloumn];
-                }//((IList) notPossibles).Add(table[i,coloumn]);
+                    result.AddPossible(table[i, coloumn]);
+                }
             }
-            //columnPossibles = (int[]) allDigits.Except(notPossibles);
-            columnPossibles = new int[] {1, 3, 4, 5, 6, 7, 8, 9};
-            return columnPossibles;
+            return  allDigits.Except(notPossibles).ToArray();
+            
+            
         }
 
         public int[] GetNotPossibles()
         {
-            return notPossibles;
+            return notPossibles.ToArray();
+        }
+    }
+
+    public class CheckResult
+    {
+        public void AddPossible(int i)
+        {
+            throw new NotImplementedException();
         }
     }
 }
