@@ -9,27 +9,27 @@ namespace SudokuSolver
 {
     public class CheckSquares
     {
-        private int[] allDigits = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        private int[] notPossibles;
-        private int[] squarePossibles;
+        List<int> allDigits = new List<int>(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
 
-        public int[] GetPossibles(int[][] table, int row, int column)
+        public List<int> GetPossiblesSquare(int[,] table, int row, int column)
         {
-            for (int i = (row/3); i < i + 3; i++)
-            {
-                for (int j = (column/3); j < j + 3; j++)
-                {
-                    if (table[i][j] != 0)
-                        ((IList) notPossibles).Add(table[i][j]);
-                }
-            }
-            squarePossibles = (int[]) allDigits.Except(notPossibles);
+            var squarePossibles = allDigits.Except(GetNotPossiblesSquare(table, row,column)).ToList();
             return squarePossibles;
         }
 
-        public int[] GetNotPossibles()
+        public List<int> GetNotPossiblesSquare(int[,] table, int row, int column)
+
         {
-            return notPossibles;
+            var notPossiblesSquare = new List<int>();
+            for (int i = (row/3)*3; i < i + 3; i++)
+            {
+                for (int j = (column/3)*3; j < j + 3; j++)
+                {
+                    if(table[i,j]!=0)
+                        notPossiblesSquare.Add(table[i,j]);
+                }
+            }
+            return notPossiblesSquare;
         }
     }
 }

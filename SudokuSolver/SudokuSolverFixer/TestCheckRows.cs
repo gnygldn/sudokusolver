@@ -19,7 +19,7 @@ namespace SudokuSolverFixer
         public void FixCheckRows()
         {
             var response = new CheckRows();
-            response.GetPossibles(table, 3);
+            response.GetPossiblesRow(table, 3);
             response.rowPossibles.Should().BeEquivalentTo(new[] { 1, 3, 4, 5, 6, 7, 8, 9 }); 
         }
 
