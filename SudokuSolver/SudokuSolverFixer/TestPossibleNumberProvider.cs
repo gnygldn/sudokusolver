@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
@@ -10,10 +9,9 @@ using SudokuSolver;
 
 namespace SudokuSolverFixer
 {
-    [TestFixture]
-    public class TestCheckColumns
+    class TestPossibleNumberProvider
     {
-        private int[,] table=
+        private int[,] table =
         {
             {0, 0, 0, 0, 0, 0, 0, 0, 0,},
             {1, 3, 2, 0, 0, 0, 0, 0, 0,},
@@ -27,13 +25,10 @@ namespace SudokuSolverFixer
         };
 
         [Test]
-        public void FixCheckColumns()
+        public void FixCheckPossibleNumberProvider()
         {
-            var response = new CheckColumns();
-            response.GetPossiblesColumn(table,2).Should().BeEquivalentTo(new[] {1, 2, 3, 4, 5, 7});
+            var response = new PossibleNumberProvider(table,3,3);
+            response.GetCommonPossiblesList().Should().BeEquivalentTo(new[] { 1, 2, 3});
         }
-
-
-
     }
 }

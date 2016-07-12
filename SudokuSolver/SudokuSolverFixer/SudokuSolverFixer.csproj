@@ -63,6 +63,8 @@
     <Compile Include="TestCheckColumns.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestCheckRows.cs" />
+    <Compile Include="TestCheckSquare.cs" />
+    <Compile Include="TestPossibleNumberProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SudokuSolver\SudokuSolver.csproj">

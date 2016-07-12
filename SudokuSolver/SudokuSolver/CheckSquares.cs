@@ -13,20 +13,21 @@ namespace SudokuSolver
 
         public List<int> GetPossiblesSquare(int[,] table, int row, int column)
         {
-            var squarePossibles = allDigits.Except(GetNotPossiblesSquare(table, row,column)).ToList();
+            var squarePossibles = allDigits.Except(GetNotPossiblesSquare(table, row, column)).ToList();
             return squarePossibles;
         }
 
         public List<int> GetNotPossiblesSquare(int[,] table, int row, int column)
-
         {
             var notPossiblesSquare = new List<int>();
-            for (int i = (row/3)*3; i < i + 3; i++)
+            var beginRow = (row / 3)*3;
+            var beginColumn = (column / 3)*3;
+            for (int i = beginRow; i < beginRow + 3; i++)
             {
-                for (int j = (column/3)*3; j < j + 3; j++)
+                for (int j = beginColumn; j < beginColumn + 3; j++)
                 {
-                    if(table[i,j]!=0)
-                        notPossiblesSquare.Add(table[i,j]);
+                    if (table[i, j] != 0)
+                        notPossiblesSquare.Add(table[i, j]);
                 }
             }
             return notPossiblesSquare;

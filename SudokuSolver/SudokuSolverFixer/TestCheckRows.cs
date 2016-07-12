@@ -13,14 +13,24 @@ namespace SudokuSolverFixer
     [TestFixture]
     public class TestCheckRows
     {
-        private int[,] table;
+        private int[,] table =
+        {
+            {0, 0, 0, 0, 0, 0, 0, 0, 0,},
+            {1, 3, 2, 0, 0, 0, 0, 0, 0,},
+            {0, 2, 0, 9, 0, 0, 0, 0, 0,},
+            {0, 0, 0, 8, 4, 0, 5, 0, 0,},
+            {0, 0, 0, 0, 0, 7, 0, 0, 0,},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0,},
+            {0, 0, 0, 6, 0, 0, 0, 0, 0,},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0,},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0,},
+        };
 
         [Test]
         public void FixCheckRows()
         {
             var response = new CheckRows();
-            response.GetPossiblesRow(table, 3);
-            response.rowPossibles.Should().BeEquivalentTo(new[] { 1, 3, 4, 5, 6, 7, 8, 9 }); 
+            response.GetPossiblesRow(table, 3).Should().BeEquivalentTo(new[] { 1,2, 3, 6, 7,  9 }); 
         }
 
     }

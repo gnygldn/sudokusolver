@@ -14,7 +14,7 @@ namespace SudokuSolver
                 {
                     if (table[row, column] == 0)
                     {
-                        TryPossibles(table,row,column);
+                        return TryPossibles(table, row, column);
                     }
                 }
             }
@@ -22,7 +22,28 @@ namespace SudokuSolver
             return true;
         }
 
-        private int[,] CloneAtoB(int[,] A,ref int[,] B)
+
+
+        private Boolean TryPossibles(int[,] table, int row, int column)
+        {
+            PossibleNumberProvider possibles = new PossibleNumberProvider(table, row, column);
+
+            foreach (var possible in possibles.GetCommonPossiblesList())
+            {
+                var tempTable = new int[9, 9];
+                CloneAtoB(table,tempTable);
+                tempTable[row, column] = possible;
+
+                if (TableFiller(tempTable))
+                {
+                    CloneAtoB(tempTable, table);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private int[,] CloneAtoB(int[,] A, int[,] B)
         {
             for (int k = 0; k < 9; k++)
             {
@@ -33,26 +54,6 @@ namespace SudokuSolver
             }
             return B;
         }
-
-        private Boolean TryPossibles(int[,] table,int row,int column)
-        {
-            PossibleNumberProvider possibles = new PossibleNumberProvider(table, row, column);
-
-            foreach (var possible in possibles.GetCommonPossiblesList())
-            {
-                var tempTable = new int[9, 9];
-                CloneAtoB(table, ref tempTable);
-                tempTable[row, column] = possible;
-
-                if (TableFiller(tempTable))
-                {
-                    CloneAtoB(tempTable, ref table);
-                    return true;
-                }
-            }
-            return false;
-        }
-
 
         public int[,] GetTable()
         {

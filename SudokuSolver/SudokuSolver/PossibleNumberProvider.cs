@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 
 namespace SudokuSolver
 {
-    class PossibleNumberProvider
+    public class PossibleNumberProvider
     {
         List<int> allDigits = new List<int>(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
         private List<int> notPossibleNumbersFromRow;
@@ -24,12 +25,9 @@ namespace SudokuSolver
                 
         }
 
-        public int[] GetCommonPossiblesList()
+        public IEnumerable<int> GetCommonPossiblesList()
         {
-            return (int[])
-                    allDigits.Except(
-                        notPossibleNumbersFromSquare.Concat(
-                            notPossibleNumbersFromColumn.Concat(notPossibleNumbersFromRow)));
+            return allDigits.Except(notPossibleNumbersFromSquare.Concat(notPossibleNumbersFromColumn.Concat(notPossibleNumbersFromRow)));
         }
     }
 }
