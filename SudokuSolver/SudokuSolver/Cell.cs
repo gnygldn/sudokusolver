@@ -8,9 +8,8 @@ namespace SudokuSolver
 {
     public class Cell
     {
-        private int row { get; set; }
-
-
-        private int column { get; set; }
+        public int row { get; set; }
+        public int column { get; set; }
+        public int value { get; set; }
     }
 }
