@@ -29,7 +29,7 @@ namespace SudokuSolverFixer
         [Test]
         public void FixCheckRows()
         {
-            var response = new CheckRows();
+            var response = new RowChecker();
             response.GetPossiblesRow(table, 3).Should().BeEquivalentTo(new[] { 1,2, 3, 6, 7,  9 }); 
         }
 

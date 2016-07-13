@@ -29,8 +29,8 @@ namespace SudokuSolverFixer
         [Test]
         public void FixCheckColumns()
         {
-            var response = new CheckColumns();
-            response.GetPossiblesColumn(table,2).Should().BeEquivalentTo(new[] {1, 2, 3, 4, 5, 7});
+            var response = new ColumnChecker();
+            response.GetPossiblesColumn(table,3).Should().BeEquivalentTo(new[] {1, 2, 3, 4, 5, 7});
         }
 
 

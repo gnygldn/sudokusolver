@@ -19,9 +19,9 @@ namespace SudokuSolver
 
         static void main(string[] args)
         {
-            FillTable fillTable = new FillTable();
-            fillTable.TableFiller(table);
-            Console.WriteLine(fillTable.GetTable());
+            TableFiller tableFiller = new TableFiller();
+            tableFiller.FillTable(table);
+            Console.WriteLine(tableFiller.GetTable());
             Console.ReadKey();
         }
     }

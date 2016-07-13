@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace SudokuSolver
@@ -16,12 +13,12 @@ namespace SudokuSolver
 
         public PossibleNumberProvider(int[,] table, int row, int column)
         {
-            CheckRows checkRows = new CheckRows();
-            notPossibleNumbersFromRow = checkRows.GetNotPossiblesRow(table,row);
-            CheckColumns checkColumns = new CheckColumns();
-            notPossibleNumbersFromColumn = checkColumns.GetNotPossiblesColumn(table,column);
-            CheckSquares checkSquares = new CheckSquares();
-            notPossibleNumbersFromSquare = checkSquares.GetNotPossiblesSquare(table,row,column);
+            RowChecker rowChecker = new RowChecker();
+            notPossibleNumbersFromRow = rowChecker.GetNotPossiblesRow(table,row);
+            ColumnChecker columnChecker = new ColumnChecker();
+            notPossibleNumbersFromColumn = columnChecker.GetNotPossiblesColumn(table,column);
+            SquareChecker squareChecker = new SquareChecker();
+            notPossibleNumbersFromSquare = squareChecker.GetNotPossiblesSquare(table,row,column);
                 
         }
 

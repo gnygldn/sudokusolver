@@ -27,7 +27,7 @@ namespace SudokuSolverFixer
         [Test]
         public void FixCheckSquare()
         {
-            var response = new CheckSquares();
+            var response = new SquareChecker();
             response.GetPossiblesSquare(table, 3, 3).Should().BeEquivalentTo(new[] { 1, 2, 3, 5, 6, 9 });
         }
     }
