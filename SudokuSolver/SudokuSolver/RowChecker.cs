@@ -24,6 +24,8 @@ namespace SudokuSolver
             return notPossiblesRow;
         }
 
+
+
         
     }
 }

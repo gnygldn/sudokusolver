@@ -22,7 +22,7 @@ namespace SudokuSolver
 
         private Boolean TryPossibles(Board table, Cell cell)
         {
-            PossibleNumberProvider possibles = new PossibleNumberProvider(table,cell);
+            var possibles = new PossibleNumberProvider(table,cell);
 
             foreach (var possible in possibles.GetCommonPossiblesList())
             {

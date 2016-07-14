@@ -16,6 +16,7 @@ namespace SudokuSolver
             {
                 for (int column = 0; column < 9; column++)
                 {
+                    Cell[row, column]= new Cell();
                     Cell[row, column].row = row;
                     Cell[row, column].column = column;
                     Cell[row, column].value = data[row, column];
@@ -29,6 +30,7 @@ namespace SudokuSolver
             {
                 for (int column = 0; column < 9; column++)
                 {
+                    Cell[row, column] = new Cell();
                     Cell[row, column].row = row;
                     Cell[row, column].column = column;
                 }

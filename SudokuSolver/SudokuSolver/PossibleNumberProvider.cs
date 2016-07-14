@@ -13,11 +13,11 @@ namespace SudokuSolver
 
         public PossibleNumberProvider(Board table, Cell Cell)
         {
-            RowChecker rowChecker = new RowChecker();
+            var rowChecker = new RowChecker();
             notPossibleNumbersFromRow = rowChecker.GetNotPossiblesRow(table,Cell.row);
-            ColumnChecker columnChecker = new ColumnChecker();
+            var columnChecker = new ColumnChecker();
             notPossibleNumbersFromColumn = columnChecker.GetNotPossiblesColumn(table,Cell.column);
-            SquareChecker squareChecker = new SquareChecker();
+            var squareChecker = new SquareChecker();
             notPossibleNumbersFromSquare = squareChecker.GetNotPossiblesSquare(table,Cell.row,Cell.column);
                 
         }
