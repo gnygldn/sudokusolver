@@ -4,6 +4,7 @@ namespace SudokuSolver
 {
     public class Program
     {
+        public static Board MyBoard;
         public static int[,] table =
         {
             {0, 0, 0, 0, 0, 0, 0, 0, 0,},
@@ -22,6 +23,7 @@ namespace SudokuSolver
             Board board = new Board(table);
             TableFiller tableFiller = new TableFiller();
             tableFiller.FillTable(board);
+            MyBoard = tableFiller.GetTable();
             Console.WriteLine(tableFiller.GetTable());
             Console.ReadKey();
         }
