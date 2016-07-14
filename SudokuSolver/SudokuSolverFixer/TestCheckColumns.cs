@@ -13,7 +13,7 @@ namespace SudokuSolverFixer
     [TestFixture]
     public class TestCheckColumns
     {
-        private int[,] table=
+        private static int[,] table=
         {
             {0, 0, 0, 0, 0, 0, 0, 0, 0,},
             {1, 3, 2, 0, 0, 0, 0, 0, 0,},
@@ -25,12 +25,13 @@ namespace SudokuSolverFixer
             {0, 0, 0, 0, 0, 0, 0, 0, 0,},
             {0, 0, 0, 0, 0, 0, 0, 0, 0,},
         };
+        Board board = new Board(table);
 
         [Test]
         public void FixCheckColumns()
         {
             var response = new ColumnChecker();
-            response.GetPossiblesColumn(table,3).Should().BeEquivalentTo(new[] {1, 2, 3, 4, 5, 7});
+            response.GetPossiblesColumn(board,3).Should().BeEquivalentTo(new[] {1, 2, 3, 4, 5, 7});
         }
 
 

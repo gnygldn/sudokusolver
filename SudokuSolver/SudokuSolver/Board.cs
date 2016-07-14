@@ -8,8 +8,9 @@ namespace SudokuSolver
 {
     public class Board
     {
-        private Cell[,] Cell { get; set; }
-        private Board(int[,] data)
+        public Cell[,] Cell = new Cell[9,9];
+
+        public Board(int[,] data)
         {
             for (int row = 0; row < 9; row++)
             {
@@ -22,7 +23,7 @@ namespace SudokuSolver
             }
         }
 
-        private Board()
+        public Board()
         {
             for (int row = 0; row < 9; row++)
             {
@@ -44,11 +45,6 @@ namespace SudokuSolver
                 }
             }
 
-        }
-
-        public int[,] Copy();
-        {
-            return this;
         }
     }
 }

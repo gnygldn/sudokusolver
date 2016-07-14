@@ -7,13 +7,13 @@ namespace SudokuSolver
     {
         List<int> allDigits = new List<int>(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
 
-        public List<int> GetPossiblesSquare(int[,] table, int row, int column)
+        public List<int> GetPossiblesSquare(Board board, int row, int column)
         {
-            var squarePossibles = allDigits.Except(GetNotPossiblesSquare(table, row, column)).ToList();
+            var squarePossibles = allDigits.Except(GetNotPossiblesSquare(board, row, column)).ToList();
             return squarePossibles;
         }
 
-        public List<int> GetNotPossiblesSquare(int[,] table, int row, int column)
+        public List<int> GetNotPossiblesSquare(Board board, int row, int column)
         {
             var notPossiblesSquare = new List<int>();
             var beginRow = (row / 3)*3;
@@ -22,8 +22,8 @@ namespace SudokuSolver
             {
                 for (int j = beginColumn; j < beginColumn + 3; j++)
                 {
-                    if (table[i, j] != 0)
-                        notPossiblesSquare.Add(table[i, j]);
+                    if (board.Cell[i, j].value != 0)
+                        notPossiblesSquare.Add(board.Cell[i, j].value);
                 }
             }
             return notPossiblesSquare;

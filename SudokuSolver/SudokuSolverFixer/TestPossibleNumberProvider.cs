@@ -11,7 +11,7 @@ namespace SudokuSolverFixer
 {
     class TestPossibleNumberProvider
     {
-        private int[,] table =
+        private static int[,] table =
         {
             {0, 0, 0, 0, 0, 0, 0, 0, 0,},
             {1, 3, 2, 0, 0, 0, 0, 0, 0,},
@@ -23,11 +23,12 @@ namespace SudokuSolverFixer
             {0, 0, 0, 0, 0, 0, 0, 0, 0,},
             {0, 0, 0, 0, 0, 0, 0, 0, 0,},
         };
+        Board board = new Board(table);
 
         [Test]
         public void FixCheckPossibleNumberProvider()
         {
-            var response = new PossibleNumberProvider(table,3,3);
+            var response = new PossibleNumberProvider(board,board.Cell[3,3]);
             response.GetCommonPossiblesList().Should().BeEquivalentTo(new[] { 1, 2, 3});
         }
     }

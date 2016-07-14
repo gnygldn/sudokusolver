@@ -5,14 +5,14 @@ namespace SudokuSolver
 {
     public class TableFiller
     {
-        private int[,] Table;
+        private Board Table= new Board();
 
         public Boolean FillTable(Board table)
         {
-            foreach (var cell in table.cell)
+            foreach (var cell in table.Cell)
             {
                 if (cell.value != 0)
-                    return TryPossibles();
+                    return TryPossibles(table , cell);
             }
 
             Table = table;
@@ -20,18 +20,18 @@ namespace SudokuSolver
         }
 
 
-        private Boolean TryPossibles(int[,] table, int row, int column)
+        private Boolean TryPossibles(Board table, Cell cell)
         {
-            PossibleNumberProvider possibles = new PossibleNumberProvider(table, row, column);
+            PossibleNumberProvider possibles = new PossibleNumberProvider(table,cell);
 
             foreach (var possible in possibles.GetCommonPossiblesList())
             {
                 var tempTable = new Board();
-                tempTable = table.Clone();
+                table.CloneTo(tempTable);
 
                 if (FillTable(tempTable))
                 {
-                    table = tempTable.Copy();
+                    table = tempTable;
                     return true;
                 }
             }
@@ -39,7 +39,7 @@ namespace SudokuSolver
         }
 
 
-        public int[,] GetTable()
+        public Board GetTable()
         {
             return Table;
         }
