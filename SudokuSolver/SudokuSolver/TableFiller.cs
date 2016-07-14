@@ -7,33 +7,30 @@ namespace SudokuSolver
     {
         private Board Table= new Board();
 
-        public Boolean FillTable(Board table)
+        public Boolean FillTable(Board board)
         {
-            foreach (var cell in table.Cell)
+            foreach (var cell in board.Cell)
             {
                 if (cell.value != 0)
-                    return TryPossibles(table , cell);
+                    return TryPossibles(ref board , cell);
             }
 
-            Table = table;
+            Table = board;
             return true;
         }
 
 
-        private Boolean TryPossibles(Board table, Cell cell)
+        private Boolean TryPossibles(ref Board board, Cell cell)
         {
-            var possibles = new PossibleNumberProvider(table,cell);
+            var possibles = new PossibleNumberProvider(board,cell);
 
             foreach (var possible in possibles.GetCommonPossiblesList())
             {
-                var tempTable = new Board();
-                tempTable = Clone(table);
+                var tempTable = Clone(board);
                 tempTable.AssignValue(cell);
-                
-
                 if (FillTable(tempTable))
                 {
-                    table = tempTable;
+                    board = tempTable;
                     return true;
                 }
             }
