@@ -27,7 +27,9 @@ namespace SudokuSolver
             foreach (var possible in possibles.GetCommonPossiblesList())
             {
                 var tempTable = new Board();
-                table.CloneTo(tempTable);
+                tempTable = Clone(table);
+                tempTable.AssignValue(cell);
+                
 
                 if (FillTable(tempTable))
                 {
@@ -36,6 +38,13 @@ namespace SudokuSolver
                 }
             }
             return false;
+        }
+
+        public Board Clone(Board board)
+        {
+            var tempTable = new Board();
+            board.CloneTo(tempTable);
+            return tempTable;
         }
 
 

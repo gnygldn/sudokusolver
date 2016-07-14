@@ -48,5 +48,10 @@ namespace SudokuSolver
             }
 
         }
+
+        public void AssignValue(Cell cell)
+        {
+            Cell[cell.row, cell.column].value = cell.value;
+        }
     }
 }
