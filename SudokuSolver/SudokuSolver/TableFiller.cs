@@ -1,21 +1,20 @@
 ﻿using System;
-using System.Reflection;
 
 namespace SudokuSolver
 {
     public class TableFiller
     {
-        private Board Table= new Board();
+        private Board _table= new Board();
 
         public Boolean FillTable(Board board)
         {
             foreach (var cell in board.Cell)
             {
-                if (cell.value != 0)
-                    return TryPossibles(ref board , cell);
+                if (cell.Value == 0)
+                    return TryPossibles(ref board, cell);
             }
 
-            Table = board;
+            _table = board;
             return true;
         }
 
@@ -27,7 +26,7 @@ namespace SudokuSolver
             foreach (var possible in possibles.GetCommonPossiblesList())
             {
                 var tempTable = Clone(board);
-                tempTable.AssignValue(cell);
+                tempTable.AssignValue(cell,possible);
                 if (FillTable(tempTable))
                 {
                     board = tempTable;
@@ -47,7 +46,7 @@ namespace SudokuSolver
 
         public Board GetTable()
         {
-            return Table;
+            return _table;
         }
     }
 }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SudokuSolver
+﻿namespace SudokuSolver
 {
     public class Board
     {
@@ -16,10 +10,12 @@ namespace SudokuSolver
             {
                 for (int column = 0; column < 9; column++)
                 {
-                    Cell[row, column]= new Cell();
-                    Cell[row, column].row = row;
-                    Cell[row, column].column = column;
-                    Cell[row, column].value = data[row, column];
+                    Cell[row, column] = new Cell
+                    {
+                        Row = row,
+                        Column = column,
+                        Value = data[row, column]
+                    };
                 }
             }
         }
@@ -30,9 +26,11 @@ namespace SudokuSolver
             {
                 for (int column = 0; column < 9; column++)
                 {
-                    Cell[row, column] = new Cell();
-                    Cell[row, column].row = row;
-                    Cell[row, column].column = column;
+                    Cell[row, column] = new Cell
+                    {
+                        Row = row,
+                        Column = column
+                    };
                 }
             }
         }
@@ -43,15 +41,15 @@ namespace SudokuSolver
             {
                 for (int column = 0; column < 9; column++)
                 {
-                    table.Cell[row, column].value = Cell[row, column].value;
+                    table.Cell[row, column].Value = Cell[row, column].Value;
                 }
             }
 
         }
 
-        public void AssignValue(Cell cell)
+        public void AssignValue(Cell cell,int possible)
         {
-            Cell[cell.row, cell.column].value = cell.value;
+            Cell[cell.Row, cell.Column].Value = possible;
         }
     }
 }

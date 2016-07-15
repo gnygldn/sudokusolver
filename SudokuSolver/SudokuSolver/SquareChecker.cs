@@ -5,11 +5,10 @@ namespace SudokuSolver
 {
     public class SquareChecker
     {
-        List<int> allDigits = new List<int>(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
 
         public List<int> GetPossiblesSquare(Board board, int row, int column)
         {
-            var squarePossibles = allDigits.Except(GetNotPossiblesSquare(board, row, column)).ToList();
+            var squarePossibles = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }.Except(GetNotPossiblesSquare(board, row, column)).ToList();
             return squarePossibles;
         }
 
@@ -22,8 +21,8 @@ namespace SudokuSolver
             {
                 for (int j = beginColumn; j < beginColumn + 3; j++)
                 {
-                    if (board.Cell[i, j].value != 0)
-                        notPossiblesSquare.Add(board.Cell[i, j].value);
+                    if (board.Cell[i, j].Value != 0)
+                        notPossiblesSquare.Add(board.Cell[i, j].Value);
                 }
             }
             return notPossiblesSquare;
