@@ -25,7 +25,10 @@ namespace SudokuSolver
             TableFiller tableFiller = new TableFiller();
             tableFiller.FillTable(board);
             MyBoard = tableFiller.GetTable();
-            Console.WriteLine(MyBoard);
+            foreach (var cell in MyBoard.Cell)
+            {
+                Console.Write(cell.Value);
+            }
             Console.ReadKey();
         }
     }

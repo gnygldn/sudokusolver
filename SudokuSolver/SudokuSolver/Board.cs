@@ -1,8 +1,21 @@
-﻿namespace SudokuSolver
+﻿using System.Collections.Generic;
+
+namespace SudokuSolver
 {
     public class Board
     {
         public Cell[,] Cell = new Cell[9,9];
+
+        public IEnumerable<int> Values
+        {
+            get
+            {
+                foreach (var cell in Cell)
+                {
+                    yield return cell.Value;
+                }
+            }
+        }
 
         public Board(int[,] data)
         {

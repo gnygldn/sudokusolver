@@ -4,7 +4,7 @@ namespace SudokuSolver
 {
     public class TableFiller
     {
-        private Board _table= new Board();
+        public Board Table= new Board();
 
         public Boolean FillTable(Board board)
         {
@@ -14,7 +14,7 @@ namespace SudokuSolver
                     return TryPossibles(ref board, cell);
             }
 
-            _table = board;
+            Table = board;
             return true;
         }
 
@@ -46,7 +46,7 @@ namespace SudokuSolver
 
         public Board GetTable()
         {
-            return _table;
+            return Table;
         }
     }
 }
