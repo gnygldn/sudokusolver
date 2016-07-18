@@ -7,7 +7,7 @@ namespace SudokuSolverFixer
     class TestCheckSquare
     {
         private static readonly int[,] Table =
-       {
+        {
             {0, 4, 5, 8, 0, 3, 7, 1, 0},
             {8, 1, 0, 0, 0, 0, 0, 2, 4},
             {7, 0, 9, 0, 0, 0, 5, 0, 8},
@@ -25,7 +25,7 @@ namespace SudokuSolverFixer
         public void FixCheckSquare()
         {
             var response = new SquareChecker();
-            response.GetPossiblesSquare(_board, 0,0).Should().BeEquivalentTo(new[] { 2,3,6 });
+            response.GetPossiblesSquare(_board, 0, 0).Should().BeEquivalentTo(new[] { 2, 3, 6 });
         }
     }
 }

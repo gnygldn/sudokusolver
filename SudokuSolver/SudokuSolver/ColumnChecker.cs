@@ -5,11 +5,10 @@ namespace SudokuSolver
 {
     public class ColumnChecker
     {
-        
-
         public List<int> GetPossiblesColumn(Board board, int column)
         {
-            var columnPossibles = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }.Except(GetNotPossiblesColumn(board, column)).ToList();
+            var columnPossibles =
+                new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }.Except(GetNotPossiblesColumn(board, column)).ToList();
             return columnPossibles;
         }
 
@@ -25,4 +24,3 @@ namespace SudokuSolver
         }
     }
 }
-

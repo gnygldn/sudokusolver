@@ -24,8 +24,8 @@ namespace SudokuSolverFixer
         [Test]
         public void FixCheckPossibleNumberProvider()
         {
-            var response = new PossibleNumberProvider(_board,_board.Cell[0,0]);
-            response.GetCommonPossiblesList().Should().BeEquivalentTo(new[] { 2});
+            var response = new PossibleNumberProvider(_board, _board.Cell[0, 0]);
+            response.GetCommonPossiblesList().Should().BeEquivalentTo(new[] { 2 });
         }
     }
 }

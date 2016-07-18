@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SudokuSolver
 {
     public class TableFiller
     {
-        private Board _table= new Board();
+        private Board _table = new Board();
 
         public Boolean FillTable(Board board)
         {
@@ -21,12 +22,12 @@ namespace SudokuSolver
 
         private Boolean TryPossibles(Board board, Cell cell)
         {
-            var possibles = new PossibleNumberProvider(board,cell);
+            var possibles = new PossibleNumberProvider(board, cell);
 
             foreach (var possible in possibles.GetCommonPossiblesList())
             {
                 var tempTable = Clone(board);
-                tempTable.AssignValue(cell,possible);
+                tempTable.AssignValue(cell, possible);
                 if (FillTable(tempTable))
                 {
                     return true;

@@ -5,8 +5,6 @@ namespace SudokuSolver
 {
     public class RowChecker
     {
-      
-
         public List<int> GetPossiblesRow(Board table, int row)
         {
             var rowPossibles = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }.Except(GetNotPossiblesRow(table, row)).ToList();
@@ -23,9 +21,5 @@ namespace SudokuSolver
             }
             return notPossiblesRow;
         }
-
-
-
-        
     }
 }
