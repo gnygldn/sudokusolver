@@ -4,22 +4,22 @@ namespace SudokuSolver
 {
     public class TableFiller
     {
-        private Board Table= new Board();
+        private Board _table= new Board();
 
         public Boolean FillTable(Board board)
         {
             foreach (var cell in board.Cell)
             {
                 if (cell.Value == 0)
-                    return TryPossibles(ref board, cell);
+                    return TryPossibles(board, cell);
             }
 
-            Table = board;
+            _table = board;
             return true;
         }
 
 
-        private Boolean TryPossibles(ref Board board, Cell cell)
+        private Boolean TryPossibles(Board board, Cell cell)
         {
             var possibles = new PossibleNumberProvider(board,cell);
 
@@ -29,7 +29,6 @@ namespace SudokuSolver
                 tempTable.AssignValue(cell,possible);
                 if (FillTable(tempTable))
                 {
-                    board = tempTable;
                     return true;
                 }
             }
@@ -46,7 +45,7 @@ namespace SudokuSolver
 
         public Board GetTable()
         {
-            return Table;
+            return _table;
         }
     }
 }

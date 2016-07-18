@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using FluentAssertions;
 using SudokuSolver;
 
@@ -11,7 +6,7 @@ namespace SudokuSolverFixer
 {
     class TestCheckSquare
     {
-        private static int[,] table =
+        private static readonly int[,] Table =
        {
             {0, 4, 5, 8, 0, 3, 7, 1, 0},
             {8, 1, 0, 0, 0, 0, 0, 2, 4},
@@ -23,13 +18,14 @@ namespace SudokuSolverFixer
             {3, 2, 0, 0, 0, 0, 0, 8, 7},
             {0, 5, 7, 3, 0, 8, 2, 6, 0},
         };
-        Board board = new Board(table);
+
+        readonly Board _board = new Board(Table);
 
         [Test]
         public void FixCheckSquare()
         {
             var response = new SquareChecker();
-            response.GetPossiblesSquare(board, 0,0).Should().BeEquivalentTo(new[] { 2,3,6 });
+            response.GetPossiblesSquare(_board, 0,0).Should().BeEquivalentTo(new[] { 2,3,6 });
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using FluentAssertions;
 using SudokuSolver;
 
@@ -7,7 +6,7 @@ namespace SudokuSolverFixer
 {
     class TestCheckFillTable
     {
-        private static int[,] table =
+        private static readonly int[,] Table =
         {
             {0,0,3,9,0,0,0,5,1},
             {5,4,6,0,1,8,3,0,0},
@@ -20,7 +19,7 @@ namespace SudokuSolverFixer
             {8,5,0,0,0,4,6,0,0},
         };
 
-        private static int[,] table2 =
+        private static readonly int[,] Table2 =
         {
             {7,2,3,9,4,6,8,5,1},
             {5,4,6,2,1,8,3,7,9},
@@ -33,15 +32,15 @@ namespace SudokuSolverFixer
             {8,5,2,7,9,4,6,1,3},
         };
 
-        Board board = new Board(table);
-        Board board2 = new Board(table2);
+        private readonly Board _board = new Board(Table);
+        public readonly Board Board2 = new Board(Table2);
 
         [Test]
         public void FixCheckFillTable()
         {
             var response = new TableFiller();
-            response.FillTable(board);
-            response.GetTable().Values.ShouldBeEquivalentTo(board2.Values);
+            response.FillTable(_board);
+            response.GetTable().Values.ShouldBeEquivalentTo(Board2.Values);
         }
     }
 }
