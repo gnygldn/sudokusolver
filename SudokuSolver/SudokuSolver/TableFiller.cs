@@ -4,7 +4,7 @@ namespace SudokuSolver
 {
     public class TableFiller
     {
-        public Board Table= new Board();
+        private Board Table= new Board();
 
         public Boolean FillTable(Board board)
         {
@@ -39,7 +39,7 @@ namespace SudokuSolver
         public Board Clone(Board board)
         {
             var tempTable = new Board();
-            board.CloneTo(tempTable);
+            board.CopyTo(tempTable);
             return tempTable;
         }
 

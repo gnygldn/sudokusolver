@@ -8,15 +8,15 @@ namespace SudokuSolver
 
         public static int[,] Table =
         {
-            {0, 4, 5, 8, 0, 3, 7, 1, 0},
-            {8, 1, 0, 0, 0, 0, 0, 2, 4},
-            {7, 0, 9, 0, 0, 0, 5, 0, 8},
-            {0, 0, 0, 9, 0, 7, 0, 0, 0},
-            {0, 0, 0, 0, 6, 0, 0, 0, 0},
-            {0, 0, 0, 4, 0, 2, 0, 0, 0},
-            {6, 0, 4, 0, 0, 0, 3, 0, 5},
-            {3, 2, 0, 0, 0, 0, 0, 8, 7},
-            {0, 5, 7, 3, 0, 8, 2, 6, 0},
+            {0,8,0,0,0,6,0,0,3},
+            {0,6,0,0,7,0,2,0,0},
+            {0,0,4,0,1,0,0,9,0},
+            {0,5,0,0,0,0,8,0,1},
+            {0,0,0,0,0,0,0,0,0},
+            {0,1,3,0,0,0,0,6,0},
+            {0,0,5,0,0,9,0,0,8},
+            {0,0,0,0,2,0,0,0,0},
+            {0,0,6,7,0,0,3,0,2},
         };
 
         public static void Main()
@@ -25,9 +25,13 @@ namespace SudokuSolver
             TableFiller tableFiller = new TableFiller();
             tableFiller.FillTable(board);
             MyBoard = tableFiller.GetTable();
-            foreach (var cell in MyBoard.Cell)
+            for (int i = 0; i < 9; i++)
             {
-                Console.Write(cell.Value);
+                for (int j = 0; j < 9; j++)
+                {
+                    Console.Write(MyBoard.Cell[i, j].Value);
+                }
+                Console.WriteLine();
             }
             Console.ReadKey();
         }

@@ -29,7 +29,7 @@ namespace SudokuSolverFixer
         public void FixCheckPossibleNumberProvider()
         {
             var response = new PossibleNumberProvider(board,board.Cell[0,0]);
-            response.GetCommonPossiblesList().Should().BeEquivalentTo(new[] { 2,9});
+            response.GetCommonPossiblesList().Should().BeEquivalentTo(new[] { 2});
         }
     }
 }

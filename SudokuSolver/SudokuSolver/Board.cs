@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace SudokuSolver
 {
     public class Board
     {
-        public Cell[,] Cell = new Cell[9,9];
+        public Cell[,] Cell = new Cell[9, 9];
 
         public IEnumerable<int> Values
         {
@@ -17,50 +18,43 @@ namespace SudokuSolver
             }
         }
 
-        public Board(int[,] data)
+        public Board(int[,] data = null)
+        {
+            Traverse((row, column) => { CreateCell(row, column, data); });
+        }
+
+        private void CreateCell(int row, int column, int[,] data = null)
+        {
+            Cell[row, column] = new Cell
+            {
+                Row = row,
+                Column = column,
+            };
+
+            if (data != null)
+            {
+                Cell[row, column].Value = data[row, column];
+            }
+        }
+
+        public void Traverse(Action<int, int> action)
         {
             for (int row = 0; row < 9; row++)
             {
                 for (int column = 0; column < 9; column++)
                 {
-                    Cell[row, column] = new Cell
-                    {
-                        Row = row,
-                        Column = column,
-                        Value = data[row, column]
-                    };
+                    action(row, column);
                 }
             }
         }
 
-        public Board()
+        public void CopyTo(Board table)
         {
-            for (int row = 0; row < 9; row++)
-            {
-                for (int column = 0; column < 9; column++)
-                {
-                    Cell[row, column] = new Cell
-                    {
-                        Row = row,
-                        Column = column
-                    };
-                }
-            }
+            Traverse((row, column) => { table.Cell[row, column].Value = Cell[row, column].Value; });
         }
 
-        public void CloneTo(Board table)
-        {
-            for (int row = 0; row < 9; row++)
-            {
-                for (int column = 0; column < 9; column++)
-                {
-                    table.Cell[row, column].Value = Cell[row, column].Value;
-                }
-            }
 
-        }
-
-        public void AssignValue(Cell cell,int possible)
+        public void AssignValue(Cell cell, int possible)
         {
             Cell[cell.Row, cell.Column].Value = possible;
         }
